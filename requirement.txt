@@ -22,3 +22,4 @@ flask
 pytube
 streamlit_extras.add_vertical_space
 streamlit_extras.mention
+langgraph.graph
