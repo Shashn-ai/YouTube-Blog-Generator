@@ -16,7 +16,13 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+# Sidebar for API Key
+groq_api_key = st.sidebar.text_input("Enter your GROQ API Key", type="password")
+if not groq_api_key:
+    st.sidebar.warning("Please enter your GROQ API Key to proceed.")
+    st.stop()
+
+llm = ChatGroq(model_name="gemma2-9b-it", api_key=groq_api_key)
 
 class YouTubeBlogState(TypedDict, total=False):  # `total=False` makes fields optional
     video_url: str
